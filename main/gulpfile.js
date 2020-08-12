@@ -1,4 +1,4 @@
-const { src, dest, watch } = require("gulp");
+const { src, dest, watch, series, parallel } = require("gulp");
 const loadPlugins = require("gulp-load-plugins");
 // すべて自動ロード
 // const rename = require("gulp-rename");
@@ -11,7 +11,8 @@ const cnf = pkg["gulp-config"];
 const sizes = cnf.sizes;
 const autoprefixer = require("autoprefixer");
 const browserSync = require("browser-sync");
-const server = browserSync();
+const server = browserSync.create();
+const isPropd = process.env.NODE_ENV === "production";
 
 // ファイルのコピー
 function copyFiles() {
@@ -59,14 +60,34 @@ function images(done) {
 // 使い慣れているSassでコードを書きつつ、コンパイル後のCSSの最適化にPostCSSの様々なプラグインを使用するといったことが可能です！
 function styles() {
   return src("src/sass/main.scss")
-    .pipe($.sourcemaps.init())
+    .pipe($.if(!isProd, $.sourcemaps.init()))
     .pipe($.sass())
     .pipe($.postcss([autoprefixer()]))
-    .pipe($.sourcemaps.write("."))
+    .pipe($.if(!isProd, $.sourcemaps.write(".")))
     .pipe(dest("dist/css"));
 }
 
+// js
+function scripts() {
+  return src("./src/js/*.js")
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write("."))
+    .pipe(dest("dist/js"));
+}
+
+// eslint
+function lint() {
+  return src("./src/js/*.js")
+    .pipe($.eslint({ fix: true }))
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError())
+    .pipe(dest("dist/js"));
+}
+
+// strat server
 function startAppServer() {
+  // serverを立てる
   server.init({
     server: {
       baseDir: "./dist",
@@ -76,8 +97,13 @@ function startAppServer() {
   watch("./src/**/*.scss").on("change", server.reload);
 }
 
+const serve = series(parallel(styles, series(lint, scripts)), startAppServer);
+
 exports.copyFiles = copyFiles;
 exports.icon = icon;
 exports.images = images;
 exports.styles = styles;
-exports.serve = startAppServer;
+exports.scripts = scripts;
+exports.lint = lint;
+
+exports.serve = serve;
