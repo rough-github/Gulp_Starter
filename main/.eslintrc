@@ -9,6 +9,46 @@
     // no-use-before-define
     "no-use-before-define": 0,
     // no-unused-vars
-    "no-unsed-vars": 0
+		"no-unsed-vars": 0,
+		// ===(等価)のところで=(代入)を使わない
+		"no-cond-assign": 1,
+		// console.log()を残さない
+		"no-console": 1,
+		// 条件文として不適切な記述が無いかチェックしてくれます
+		"no-constant-condition": 2,
+		// 正規表現中のerror
+		"no-control-regex": 2,
+		// debuggerの消し忘れ確認
+		"no-debugger": 1,
+		// 関数の仮引数のダブりを消す
+		"no-dupe-args": 2,
+		// オブジェクトリテラルでキーの重複を許さない
+		"no-dupe-keys": 2,
+		// switch文でcase値の重複を許さない
+		"no-duplicate-case": 2,
+		// 正規表現でからの[]を許さない
+		"no-empty-character-class": 2,
+		// 空のブロックを許さない
+		"no-empty": 1,
+		// try...catch 文でcatchブロック内で例外オブジェクトを上書きすることを許可しない。
+		"no-ex-assign": 2,
+		// 不必要なboolean型の型変換を許可しない
+		"no-extra-boolean-cast": 2,
+		// 不必要なセミコロンを許可しない
+		"no-extra-semi": 2,
+		// 関数宣言として記述された関数への上書きを許可しない
+		"no-func-assign": 2,
+		// ネストブロック内での変数や関数宣言を許可しない
+		"no-inner-declarations": 2,
+		// RegExpコンストラクタ内で無効な正規表現文字列を許可しない
+		"no-invalid-regexp": 2,
+		// Unicodeの特殊な空白文字を許可しない
+		"no-irregular-whitespace": 2,
+		// グローバルオブジェクトを関数として呼び出すことを許可しない
+		"no-obj-calls": 2,
+		// 正規表現文字列の中で２文字以上の連続した空白を許可しない
+		"no-regex-spaces": 2,
+		// 空のスロットのある配列を許可しない
+		"no-sparse-arrays": 2
   }
 }

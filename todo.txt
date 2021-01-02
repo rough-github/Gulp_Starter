@@ -1,0 +1,59 @@
+TODO: CSS ファイルと JS ファイルとファイルのリネームを行う
+install
+・gulp-clean-css
+CSS の圧縮を行う
+・gulp-uglify
+JS の圧縮を行う
+・gulp-rename
+ファイル名の変更を行う
+
+var gulp = require('gulp');
+var cleanCSS = require("gulp-clean-css");
+var rename = require("gulp-rename");
+var uglify = require("gulp-uglify");
+
+// css の圧縮&rename
+gulp.task('css-minify', function(done) {
+gulp.src('../css/\*.css')
+.pipe(cleanCSS())
+.pipe(rename({
+extname: '.min.css'
+}))
+.pipe(gulp.dest('../dest/'));
+done();
+});
+
+// js の圧縮&rename
+gulp.task('js-minify', function(done) {
+gulp.src('../js/\*.js')
+.pipe(uglify())
+.pipe(rename({
+extname: '.min.js'
+}))
+.pipe(gulp.dest('../dest/'));
+done();
+});
+
+// 監視ファイル
+gulp.task('watch-files', function(done) {
+gulp.watch("../css/_.css", gulp.task('css-minify'));
+gulp.watch("../js/_.js", gulp.task('js-minify'));
+done();
+});
+
+gulp.task('default', gulp.series('watch-files', function(done){
+done();
+}));
+
+TODO: 画像の圧縮
+npm install --save-dev gup-imagemin
+
+var imagemin = require('gulp-imagemin');
+gulp.task('imagemin', function(){
+gulp.src(['www/img/*.{png,jpg}', 'www/img/*/*.{png,jpg}'])
+.pipe(imagemin())
+.pipe(gulp.dest('www/img/'));
+})
+
+TODO: html ファイルに css, js ファイルを自動挿入
+wiredep gulp-inject gulp-useref

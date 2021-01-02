@@ -1,0 +1,18 @@
+Editorconfigはテキストエディタで標準で利用するタブ数やインデント数をタブにするかスペースにするか等を定義できるツールです。
+
+root: 
+  trueにすることで、.editorconfigよりも下の階層を対象にするというもの。基本的にはroot=trueにする。
+[*]:
+  かっこの中に対象のファイルを指定します。形式ごとにルールを追加していく事が可能です。
+indent_style:
+  インデント時のスタイルを指定。
+indent_size:
+  インデントのサイズを指定。
+end_of_line:
+  改行コードを指定。[LF]: ↓MacOS, [CRLF]: ↓+←windows
+charset:
+  文字コードを指定。
+trim_trailing_whitespace:
+  文末にスペースがあったら取り除くかどうかの指定。
+insert_final_newline:
+  最終行に改行を入れるかの設定。

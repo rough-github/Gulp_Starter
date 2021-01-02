@@ -1,13 +1,19 @@
 const init = () => {
-  alert(hello("Bob", "Tom"));
+  alert(hello('Bob', 'Tom'));
 };
 
 function hello(...args) {
-  return args.reduce((accu, curr) => {
-    return `Hello Hello ${accu} ${curr}`;
-  });
+  return args.reduce((accu, curr) => `Hello Hello ${accu} ${curr}`);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+class Foo {
+  constructor() {
+    this.foo = 'foo';
+  }
+}
+
+Foo();
+
+document.addEventListener('DOMContentLoaded', () => {
   init();
 });

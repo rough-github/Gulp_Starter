@@ -1,22 +1,21 @@
 {
   "name": "main",
   "version": "1.0.0",
-  "description": "",
+  "description": "web simple starter(gulp)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "gulp:copy": "gulp copyFiles",
     "gulp:icon": "gulp icon",
     "gulp:images": "gulp images",
-    "gulp:sass": "gulp styles",
-    "gulp:js": "gulp scripts",
-    "gulp:lint": "gulp lint",
-    "gulp:serve": "cross-env NODE_ENV=production gulp serve",
-    "gulp:dev": "gulp serve"
+    "gulp:css": "gulp css",
+    "gulp:csslint": "gulp csslint",
+    "gulp:js": "gulp js",
+    "gulp:jslint": "gulp jslint",
+    "prod": "cross-env NODE_ENV=production gulp build",
+    "dev": "gulp dev"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
@@ -24,71 +23,45 @@
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.26.12",
     "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "del": "^6.0.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-changed": "^4.0.2",
+    "gulp-changed-in-place": "^2.3.0",
+    "gulp-csscomb": "^3.1.0",
     "gulp-eslint": "^6.0.0",
     "gulp-if": "^3.0.0",
     "gulp-image-resize": "^0.13.1",
     "gulp-imagemin": "^7.1.0",
+    "gulp-inject": "^5.0.5",
     "gulp-load-plugins": "^2.0.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "node-sass": "^4.14.1"
-  },
-  "gulp-config": {
-    "sizes": [
-      [
-        16,
-        16
-      ],
-      [
-        32,
-        32
-      ],
-      [
-        48,
-        48
-      ],
-      [
-        57,
-        57
-      ],
-      [
-        76,
-        76
-      ],
-      [
-        120,
-        120
-      ],
-      [
-        128,
-        128
-      ],
-      [
-        152,
-        152
-      ],
-      [
-        167,
-        167
-      ],
-      [
-        180,
-        180
-      ],
-      [
-        192,
-        192
-      ],
-      [
-        512,
-        512
-      ]
-    ]
+    "gulp-stylelint": "^13.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-useref": "^5.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^9.0.1",
+    "node-sass": "^4.14.1",
+    "postcss": "^7.0.32",
+    "prettier": "^2.2.1",
+    "sc5-styleguide": "^2.2.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-primer": "^9.3.3",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.18.0",
+    "wiredep": "^4.0.0"
   }
 }
