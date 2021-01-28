@@ -1,7 +1,11 @@
 # Gulp-Starter
 
-#　機能
+## 使い方
+For Dev -> npm run dev<br>
+For Prod -> npm run prod<br>
 
+
+###　機能
 - sass
 - PostCSS
 - eslint

@@ -2,8 +2,8 @@ const ASSET_ROOT = "src";
 const DEST_ROOT = "public";
 
 const rootForHTML = ({
-	src: `${ASSET_ROOT}/assets/**/*.html`,
-	dest: `${DEST_ROOT}/assets`
+	src: `${ASSET_ROOT}/**/*.html`,
+	dest: `${DEST_ROOT}`
 })
 
 const rootForCSS = ({
